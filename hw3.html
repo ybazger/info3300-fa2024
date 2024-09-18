@@ -1,0 +1,112 @@
+<html>
+<head>  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h3> Name: Yama Bazger - NetID: mb2482</h3>
+
+
+<h2> Problem 1:</h2>
+    <p id="Problem1">
+
+        <svg width="400" height="400">
+            <script>
+                let svg = d3.select("svg");
+                svg.style("background-color", "gray");
+    
+                svg.append("circle").attr("cx", 200).attr("cy", 200).attr("r", 10).style("fill", "lightgrey");
+                svg.append("text")
+                   .attr("x", 200)
+                   .attr("y", 200)
+                   .attr("text-anchor", "middle") 
+                   .attr("dominant-baseline", "middle") 
+                   .style("fill", "blue")
+                   .text("Yama");
+                
+                svg.append("rect")
+                   .attr("x", 156)   
+                   .attr("y", 187)   
+                   .attr("width", 18) 
+                   .attr("height", 49) 
+                   .attr("fill", "brown").attr("stroke", "green"); 
+                
+               svg.append("rect")
+                   .attr("x", 222)   
+                   .attr("y", 187)   
+                   .attr("width", 22)  
+                   .attr("height", 40) 
+                   .attr("fill", "red").attr("stroke", "blue"); 
+                
+                   svg.append("path")
+                   .attr("d", "M 130 80 L 180 105 L 200 155 L 130 180 L 80 170 L 80 105 Z")
+                   .attr("fill", "red").attr("stroke", "purple"); 
+            </script>
+        </svg>
+    </p>
+
+    <h2> Problem 2:</h2>
+    <p id="Problem2">
+        
+        <svg id="svg2" width="360" height="360">
+            <script>
+                <!-- #svg2 because it was not working properly (DOM thingy - you have to specify by ID or else it would just 
+                 apply it all on the very first SVG file it finds) -->
+                let grapher = d3.select("#svg2");
+                grapher.style("background-color", "white").style("border", "1px solid black");
+                
+                grapher.append("rect")
+                .attr("x", 20)   
+                .attr("y", 20)   
+                .attr("width", 320) 
+                .attr("height", 320) 
+                .attr("fill", "white").attr("stroke", "gray").style("opacity", 0.3); 
+                
+                let xScale = d3.scaleLinear()
+                .domain([0, 10]) 
+                .range([20, 340]); 
+ 
+                let yScale = d3.scaleLinear()
+                .domain([0, 10]) 
+                .range([340, 20]);
+
+                for (let i = 0; i <= 10; i++) {
+                    grapher.append("line")
+                       .attr("x1", 20)
+                       .attr("x2", 340)
+                       .attr("y1", yScale(i))
+                       .attr("y2", yScale(i))
+                       .style("stroke", "grey")
+                       .style("stroke-width", "1px").style("opacity", 0.3);
+
+                    grapher.append("line")
+                       .attr("x1", xScale(i))
+                       .attr("x2", xScale(i))
+                       .attr("y1", 20)
+                       .attr("y2", 340)
+                       .style("stroke", "grey")
+                       .style("stroke-width", "1px").style("opacity", 0.3);
+
+                    let data = [{"x":1.0 ,"y":9.0},
+                    {"x":1.5 ,"y":6.0},
+                    {"x":2.5 ,"y":4.0},
+                    {"x":4.0 ,"y":2.0},
+                    {"x":5.0 ,"y":1.6},
+                    {"x":6.0 ,"y":2.4},
+                    {"x":7.0 ,"y":3.0},
+                    {"x":8.0 ,"y":3.4},
+                    {"x":9.0 ,"y":3.6}]
+                    
+                    // An anonymous function that I made so it automates the process of putting a circle as required by the data set given by Professor Rzeszotarski 
+                    data.forEach(d => {
+                        grapher.append("circle")
+                           .attr("cx", xScale(d.x))
+                           .attr("cy", yScale(d.y))
+                           .attr("r", 10)
+                           .style("fill", "indigo");
+                    });
+                }
+            </script>
+        </svg>
+    </p>
+ 
+</body>
+</html>
